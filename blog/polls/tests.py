@@ -2,8 +2,21 @@ import datetime
 
 from django.test import TestCase
 from django.utils import timezone
+from django.urls import reverse
 
 from .models import Question
+
+
+def create_question(question_text, days):
+    """
+    :param question_text: (String) Question to be displayed
+    :param days: (Integer) Offset to now (negative for questions published
+    in the past, positive for questions that have uet to be published)
+    :return: A question with the given 'question_text' and published the
+    given number of 'days' offset.
+    """
+    time = timezone.now() + datetime.timedelta(days=days)
+    return Question.objects.create(question_text=question_text, pub_date=time)
 
 
 class QuestionModelTests(TestCase):
@@ -35,4 +48,5 @@ class QuestionModelTests(TestCase):
         time = timezone.now() - datetime.timedelta(hours=23, minutes=59, seconds=59)
         future_question = Question(pub_date=time)
         self.assertIs(future_question.was_published_recently(), True)
+
 
