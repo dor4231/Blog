@@ -1,0 +1,14 @@
+body {
+    background-image: url("../assets/images/david-hieb-40788-unsplash.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+li {
+    background: rgba(0,0,0,0.7);
+}
+
+li a {
+    color: #3670aa;
+}
