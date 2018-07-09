@@ -1,2 +1,4 @@
 .idea/
 blog/pastrama/fixtures/
+/node_modules
+/venv
