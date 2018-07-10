@@ -1,0 +1,397 @@
+/*
+########## Debug ##########
+ */
+
+* {
+    /*    border: 1px solid red;*/
+    /*    box-sizing: border-box;*/
+}
+
+/*
+########## General ##########
+ */
+
+html, body, h1, h2, h3, h4, form, fieldset, input, label {
+    padding: 0;
+    margin: 0;
+    font-family: Roboto, sans-serif;
+}
+
+html body {
+    height: 100%;
+}
+
+/*
+########## Header ##########
+ */
+
+header {
+    display: flex;
+    text-align: center;
+    padding: 20px 0 20px 0;
+
+    background-color: #4796D0;
+    color: #F3F3F9;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+header h1 {
+    flex-basis: 90%;
+    order: 0;
+    font-size: 3.7em;
+    margin-left: calc(10% + 80px);
+}
+
+header img {
+    flex-basis: 10%;
+    order: 1;
+    width: 10%;
+    height: 10%;
+    margin: 1% 40px;
+}
+
+/*
+########## App Window ##########
+ */
+
+.app-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    background-color: #333;
+    padding: 35px;
+    border-radius: 2% 2% 0 0;
+    height: calc(100% - (3em + 20px));
+}
+
+/*
+########## Form ##########
+ */
+
+.request_control {
+    display: flex;
+    /*flex-wrap: wrap;*/
+    box-sizing: border-box;
+    max-width: 1100px;
+    margin: 0 auto 40px auto;
+}
+
+.request_control fieldset {
+    border: none;
+    margin-right: 1%;
+}
+
+.request_control .form_tab {
+    display: flex;
+    flex-wrap: wrap;
+    /*flex-direction: column;*/
+    /*justify-content: space-between;*/
+    /*flex-basis: 100%;*/
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    border: none;
+    box-shadow: 4px 4px 5px #000;
+    background-color: #F3F3F9;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.request_control .form_tab h2 {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.request_control .send_request {
+    border: none;
+    flex-basis: 6%;
+    padding: 10px;
+    border-radius: 10px 100% 100% 10px;
+    background-color: #4796D0;
+    color: #F3F3F9;
+    font-size: 1.5em;
+    margin: 8% 0;
+}
+
+.request_control input {
+    display: inline;
+}
+
+.request_control label {
+    display: inline-block;
+    padding: 3px;
+    cursor: pointer;
+}
+
+.request_control .custom {
+    /*align-items: flex-end;*/
+    align-self: flex-end;
+    margin: 0;
+}
+
+.request_control .custom input {
+    flex-basis: 80%;
+}
+
+.request_control .custom button {
+    border: none;
+    background-color: #4796D0;
+    border-radius: 100%;
+    color: white;
+    width: 23px;
+    height: 23px;
+    line-height: 1;
+    font-size: 1em;
+    box-shadow: 1px 1px 2px #333333;
+    flex-basis: 10%;
+    cursor: pointer;
+}
+
+.request_control .custom button:active {
+    box-shadow: none;
+}
+
+.input_div {
+    margin-bottom: 10px;
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+
+.adding_element_input {
+    display: flex;
+    justify-content: space-between;
+}
+
+/*
+########## Request \ Response ##########
+ */
+
+.transport_container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.text_area {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 50%;
+    padding: 0 calc(10% / 4);
+    height: 500px;
+    box-sizing: border-box;
+}
+
+.text_area textarea {
+    max-width: 495px;
+    resize: none;
+    top: 0;
+}
+
+.text_area .headline_info {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+    background-color: #F3F3F9;
+    border-radius: 10px 10px 0 0;
+    padding: 10px 15px;
+}
+
+.text_area .headline_info div {
+    display: inline-block;
+    flex-basis: 30%;
+}
+
+.res-status {
+    left: 0;
+}
+
+.res-time {
+    right: 0;
+}
+
+.text_area textarea {
+    flex-basis: 100%;
+    height: calc(100% - 20px);
+}
+
+.text_area div {
+    flex-basis: 33%;
+    max-height: 50px;
+}
+
+/*
+########## History List ##########
+ */
+
+.burger_container {
+    position: fixed;
+    top: 30px;
+    left: 40px;
+    z-index: 2;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    padding: 6px;
+    max-width: 50px;
+    width: 5%;
+}
+
+.burger_container img {
+    max-width: 100%;
+}
+
+.burger_container input {
+    display: block;
+}
+
+.requests_store {
+    position: fixed;
+    width: 400px;
+    height: 100vh;
+    background-color: #212121;
+    top: 0;
+    left: -400px;
+    transition: left 0.4s;
+    z-index: 0;
+    color: #d4d4d4;
+}
+
+#requests_store_toggle:checked ~ section {
+    left: 0;
+}
+
+.list_headline {
+    color: #d4d4d4;
+    text-align: center;
+    background-color: #111;
+    padding: 40px 0;
+    box-shadow: 0 1px 4px white;
+    position:relative;
+}
+
+.list_headline h2 {
+    /*margin: 40px 0;*/
+    font-size: 2.5em;
+}
+
+.list_headline button {
+    position: absolute;
+    right: 5%;
+    top: 40px;
+    color: #000;
+    border: none;
+    background-color: rgba(255,255,255,0.6);
+    border-radius: 10px;
+    font-size: 2.5em;
+}
+
+.requests_store .list {
+    height: calc(100% - (40px * 2) - 2.5em);
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.list::-webkit-scrollbar {
+    display: none;
+}
+
+.history_tile {
+    width: 78%;
+    height: 80px;
+    margin: 30px 6%;
+    padding: 2% 3%;
+    background-color: #515151;
+    box-shadow: 2px 2px 3px #F3F3F9;
+}
+
+/*
+########## Dynamic ##########
+ */
+
+.selected {
+    background-color: rgba(71, 150, 208, 0.5);
+    border-radius: 5px;
+    color: #fff;
+}
+
+.error_input {
+    border: 1px solid #FF3228;
+    color: #FF3228;
+}
+
+input[type=checkbox], input[type=radio] {
+    display: none;
+}
+
+.hidden {
+    display: none;
+}
+
+.pop-up {
+    position:fixed;
+    width: 30%;
+    margin: 0 auto;
+    top: 30%;
+    left: 32%;
+    padding: 40px 50px;
+    border: 10px solid #d4d4d4;
+    background-color: rgba(0,0,0,0.86);
+    color: #d4d4d4;
+    border-radius: 40px;
+}
+
+.pop-up h3 {
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 19px;
+}
+
+.pop-up .form {
+    margin: 0 20%;
+}
+
+.pop-up input[type=text] {
+    padding: 10px;
+    width: 100%;
+    border-radius: 10px;
+    border:none;
+    font-size: 1em;
+    font-family: Helvetica, sans-serif;
+    display: block;
+}
+
+.pop-up input {
+    display: inline;
+    /*margin: 10px;*/
+}
+
+.pop-up button {
+    margin: 10px 10% 0 10%;
+    padding: 10px;
+    width: 80%;
+    font-size: 1em;
+    border-radius: 10px;
+    border:none;
+    background-color: #4796D0;
+    color: #F3F3F9;
+}
+
+.loading {
+    background-size: 100%;
+    background: #ffffff url("../assets/images/Sausage.gif") no-repeat right center;
+    color: #aaa;
+    opacity: 0.5;
+}
+
+/*
+########## Responsive ##########
+ */
+
+
+@media screen and (max-width: 1000px) {
+    fieldset.headers {
+        display: none;
+    }
+}
