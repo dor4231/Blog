@@ -8,3 +8,7 @@ from rest_framework import generics
 class RequestListCreate(generics.ListCreateAPIView):
     queryset = Request.objects.all()
     serializer_class = RequestSerializer
+
+
+def index(request):
+    return render(request, 'pastrama/index.html')

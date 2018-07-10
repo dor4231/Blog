@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densityDpi=device-dpi">
+
+        <title>HTTP API Requests Tool</title>
+
+        <link rel="icon" type="image/png" href="{% static 'pastrama/assets/images/pastrama.png' %}">
+        <link rel="stylesheet" href="{% static 'pastrama/css/main.css' %}">
+    </head>
+    <body>
+        <header>
+            <h1>PASTRAMA</h1>
+            <img src="{% static 'pastrama/assets/images/pastrama.png' %}" alt="POSTRAUMA Logo">
+        </header>
+        <section class="app-container">
+            <form action="/api_tool" method="POST" id="request_form">
+                <section class="request_control">
+                    <fieldset class="">
+                        <div class="form_tab environments">
+                            <h2>Environment</h2>
+                            <div class="input_div selected"><input type="radio" name="env" id="usa" value="https://usa-api.idomoo.com" checked="checked"><label for="usa">USA</label></div>
+                            <div class="input_div"><input type="radio" name="env" id="eu" value="https://eur-api.idomoo.com"><label for="eu">EU</label></div>
+                            <div class="input_div"><input type="radio" name="env" id="pre" value="https://pre-prod-6-0.idomoo.com"><label for="pre">Pre-Prod</label></div>
+                            <div class="input_div custom">
+                                <label for="custom_env"><input type="radio" name="env" id="custom1" value="Custom"><label for="custom1">Custom:</label></label><br>
+                                <input type="text" name="env" id="custom_env" value="Enter URL Here">
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset class="">
+                        <div class="form_tab service">
+                            <h2>Service</h2>
+                            <div class="input_div"><input type="radio" name="service" id="sbv0" value="/api/cg"><label for="sbv0">Storyboard V0</label></div>
+                            <div class="input_div selected"><input type="radio" name="service" id="sbv2" value="/api/v2/storyboard/generate" checked="checked"><label for="sbv2">Storyboard V2</label></div>
+                            <div class="input_div"><input type="radio" name="service" id="scene" value="/api/v2/scenes/generate"><label for="scene">Scene API</label></div>
+                            <div class="input_div custom">
+                                <label for="custom_service"><input type="radio" name="service" id="custom2" value="Custom"><label for="custom2">Custom:</label></label><br>
+                                <input type="text" name="env" id="custom_service" value="Enter URL Here">
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset class="headers">
+                        <div class="form_tab headers">
+                            <h2>Headers</h2>
+                            <div id="headers_stock">
+                                <div class="input_div selected"><input type="checkbox" name="headers" id="content" value="Content-Type:application/json" checked="checked"><label for="content">Content-Type:application/json</label></div>
+                                <div class="input_div selected"><input type="checkbox" name="headers" id="accept" value="Accept:application/json" checked="checked"><label for="accept">Accept:application/json</label></div>
+                            </div>
+                            <div class="input_div custom">
+                                <label for="custom_header">Custom:</label>
+                                <div class="adding_element_input">
+                                    <input type="text" id="custom_header" value="Enter URL Here">
+                                    <button id="add_header">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset class="">
+                        <div class="form_tab account_info">
+                            <h2>Additional Info</h2>
+                            <div class="input_div"><label for="account_id">Account ID:</label><input type="text" name="account_id" value="Enter Account_ID" id="account_id"></div>
+                            <div class="input_div selected"><input type="checkbox" name="account_id" id="auth" checked="checked"><label for="auth">Authorization</label></div>
+                            <div class="input_div selected"><input type="checkbox" name="account_id" id="ipr" checked="checked"><label for="ipr">Add "IPR":true</label></div>
+                        </div>
+                    </fieldset>
+                    <input type="submit" class="send_request" value="SEND">
+                </section>
+                <section class="transport_container">
+                    <div class="text_area">
+                        <div class="headline_info">
+                            <div><label for="request">Request:</label></div>
+                        </div>
+                        <textarea name="request" id="request"></textarea>
+                    </div>
+                    <div class="text_area">
+                        <div class="headline_info">
+                            <div><label for="response">Response:</label></div>
+                            <div class="res-status">Status:<span></span></div>
+                            <div class="res-time">Time:<span></span></div>
+                        </div>
+                        <textarea name="response" id="response"></textarea>
+                    </div>
+                </section>
+            </form>
+        </section>
+        <input type="checkbox" id="requests_store_toggle">
+        <label for="requests_store_toggle"  class="burger_container">
+            <img src="{% static 'pastrama/assets/images/burger.png' %}">
+        </label>
+        <section class="requests_store">
+            <div class="list_headline">
+                <h2>History</h2>
+                <button id="request-save">+</button>
+            </div>
+            <div class="list">
+                <!--Get history requests from server and put here-->
+            </div>
+        </section>
+        <div class="pop-up add-to-history hidden">
+            <div class="close">
+                ❌
+            </div>
+            <h3>Add request to history</h3>
+            <div class="form">
+                <label for="test_name_to_save">Enter your request name:</label>
+                <input type="text" id="test_name_to_save"><br>
+                <input type="checkbox" id="send_test_request">
+                <label for="send_test_request">Send before saving</label><br>
+                <button id="save_request">Save Request</button>
+            </div>
+        </div>
+        <script src="{% static 'pastrama/js/request.js' %}"></script>
+        <script src="{% static 'pastrama/js/main.js' %}"></script>
+        <script src="{% static 'pastrama/js/save_history.js' %}"></script>
+    </body>
+</html>
