@@ -37,7 +37,7 @@ const listHistoryRequests = function() {
     // Get the list of history requests and append it to the sidebar (History List).
     const xhr = new XMLHttpRequest();
 
-    xhr.open("GET", "/request_history", true);
+    xhr.open("GET", "pastrama/api/request_history", true);
     xhr.onload = function () {
         let requests_names = xhr.responseText;
         const history_list = document.querySelector(".requests_store .list");

@@ -13,7 +13,7 @@ const send_request = function (username, URL, request, headers) {
         }
     };
 
-    xhr.open("POST", "/api_tool", true);
+    xhr.open("POST", "pastrama/api/send-request", true);
 
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhr.onload = function () {
@@ -39,7 +39,7 @@ const send_request = function (username, URL, request, headers) {
 const save_request = function (request_to_save) {
     const xhr = new XMLHttpRequest();
 
-    xhr.open("POST", "/save_request", true);
+    xhr.open("POST", "pastrama/api/save_request", true);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhr.onload = function () {
         const response = xhr.responseText;
